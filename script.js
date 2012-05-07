@@ -1,7 +1,6 @@
 /**
  * @author Khavilo "widowmaker" Dmitry <me@widowmaker.kiev.ua>
- * @version 0.1.2
- * @type {HTMLElement}
+ * @version 0.1.3
  */
 var	de = document.documentElement,
 		win = {w:500, h: 648},
@@ -83,8 +82,13 @@ document.body.attachEvent('onmousemove', function (e) {
 var Locator = new ActiveXObject("WbemScripting.SWbemLocator");
 var WMI = Locator.ConnectServer('.', "/root/CIMV2");
 var FSO = new ActiveXObject("Scripting.FileSystemObject");
-var WShell = new ActiveXObject("Wscript.Shell");
-var APPDATA = WShell.ExpandEnvironmentStrings("%APPDATA%");
+var WshShell = new ActiveXObject("Wscript.Shell");
+var APPDATA = WshShell.ExpandEnvironmentStrings("%APPDATA%");
+try {
+	var LauncherPath = WshShell.RegRead("HKLM\\Software\\Electronic Arts\\Need For Speed World\\LaunchInstallDir");
+} catch(e) {
+	LauncherPath = null;
+}
 
 var configFile = APPDATA + '\\Need for Speed World\\Settings\\UserSettings.xml';
 var configBackup = APPDATA + '\\Need for Speed World\\Settings\\UserSettings.xml.bak';
@@ -229,6 +233,11 @@ window.onload = function () {
 			}
 		}
 
+	if (LauncherPath !== null)
+	{
+		id('exit').innerHTML = 'Save and Run';
+	}
+
 	loadSettings();
 };
 
@@ -306,6 +315,13 @@ function save() {
 			tpl = tpl.replace(new RegExp('{' + i + '}', 'gi'), currentConfiguration[i]);
 
 	WriteFile(configFile, config.replace(/\r\n/g, '<RN>').replace(configTagRegex, '<VideoConfig>\r\n' + tpl + '\r\n    </VideoConfig>').replace(/<RN>/g, '\r\n'));
+}
+
+function exit() {
+	if (LauncherPath !== null)
+		WshShell.Run(LauncherPath, 0, false);
+
+	self.close();
 }
 
 
