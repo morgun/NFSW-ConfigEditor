@@ -1,6 +1,6 @@
 /**
  * @author Khavilo "widowmaker" Dmitry <me@widowmaker.kiev.ua>
- * @version 0.1.3
+ * @version 0.1.4
  */
 var	de = document.documentElement,
 		win = {w:500, h: 648},
@@ -16,7 +16,7 @@ var	de = document.documentElement,
 var presets = {
 	low:{
 		texturefilter:"0",
-		texturemaxani:"1",
+		texturemaxani:"0",
 		carenvironmentmapenable:"0",
 		carlodlevel:"0",
 		enableaero:"0",
@@ -207,7 +207,7 @@ window.onload = function () {
 	var rr = id('refresh_rate');
 	for (var i in resolutions)
 		if (resolutions.hasOwnProperty(i))
-			res.options[res.options.length] = new Option(i);
+			res.options[res.options.length] = new Option(i + (round(eval(i.replace('x', '/')), 2) === round(aspect, 2) ? '' : ' (!)'), i);
 
 	res.selectedIndex = res.options.length - 1;
 
@@ -319,7 +319,7 @@ function save() {
 
 function exit() {
 	if (LauncherPath !== null)
-		WshShell.Run(LauncherPath, 0, false);
+		WshShell.Run('"' + LauncherPath + '"', 0, false);
 
 	self.close();
 }
@@ -327,7 +327,7 @@ function exit() {
 
 function savePreset() {
 	readSetting();
-	WriteFile('settings.js', 'var settings = ' + currentConfiguration.toSource());
+	WriteFile('preset_' + prompt('Enter preset name:', '') + '.js', 'var settings = ' + currentConfiguration.toSource());
 }
 
 function setPreset(preset) {

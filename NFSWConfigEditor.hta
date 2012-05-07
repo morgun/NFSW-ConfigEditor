@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>NFS World Configuration Editor 0.1.3</title>
+  <title>NFS World Configuration Editor 0.1.4</title>
 	<meta http-equiv="x-ua-compatible" content="ie=9">
   <HTA:APPLICATION
 		applicationName="NFS World Configuration Editor"
@@ -20,9 +20,9 @@
 </head>
 <body>
 	<table>
-		<tr><th>Screen resolution</th>           <td><select id="resolution">
-</select><select name="screenrefresh" id="refresh_rate">
-</select></td></tr>
+		<tr><th title="(!) means that this resolution has aspect ratio different from the display">Screen resolution</th>           <td>
+			<select id="resolution"></select><select name="screenrefresh" id="refresh_rate"></select>
+		</td></tr>
 		<tr><th>Screen aspect ratio</th>
 			<td><select id="aspect">
 				<option value="0" selected>Default
@@ -58,7 +58,7 @@
 		<tr>
 			<th>Anisotropic filtering</th>
 			<td><select name="texturemaxani">
-				<option value="1">1x (Off)
+				<option value="0">Off
 				<option value="2">2x
 				<option value="4">4x
 				<option value="8">8x
@@ -71,8 +71,8 @@
 				<option value="0" selected>Off
 				<option value="2">2x
 				<option value="4">4x
-				<option value="6">6x
-				<option value="8">8x
+				<option value="6">6x - Experimental
+				<option value="8">8x - Experimental
 			</select></td>
 		</tr>
 		<tr>
@@ -110,7 +110,7 @@
 			</select></td>
 		</tr>
 		<tr>
-			<th>World details</th>
+			<th title="values below high - removes small objects like bushed, road closed signs, bus stops, etc.">World details</th>
 			<td><select name="globaldetaillevel">
 				<option value="0">Very Low
 				<option value="1">Low
@@ -197,6 +197,6 @@
 	</table>
   <div id="buttons"><button onclick="setPreset('low'); this.blur();">Max FPS</button><button onclick="setPreset('highest'); this.blur();">Best Graphics</button><!--button onclick="savePreset();this.blur();">!</button-->
 	  <button id="exit" class="right" onclick="save();exit()">Save and Close</button><button class="right" onclick="save();this.blur();">Save</button></div></div>
-	<div id="copy">Copyright 2012 <a href="mailto:me@widowmaker.kiev.ua"><font color="gold">widow</font>maker</a> @ <a href="http://forum.nfsworld.ru" target="_blank">forum.nfsworld.ru</a></div>
+	<div id="copy">Copyright 2012 <a href="mailto:me@widowmaker.kiev.ua" class="gold">widow<a href="mailto:me@widowmaker.kiev.ua">maker</a> @ <a href="http://forum.nfsworld.ru" target="_blank" onclick="WshShell.Run(this.href); return false;">forum.nfsworld.ru</a></div>
 </body>
 </html>

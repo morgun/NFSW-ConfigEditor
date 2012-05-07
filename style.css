@@ -11,6 +11,11 @@ body, button, input, select, a {
 	font-family: "Segoe UI", sans-serif;
 	font-size: 13px;
 	background: #111;
+	outline: none;
+}
+
+a.gold {
+	color: #ffd700;
 }
 
 button, input, select {
@@ -29,6 +34,14 @@ button:focus, input:focus, select:focus {
 
 body {
 
+}
+
+.hint {
+	display: inline-block;
+	color: #2f74a8;
+	margin-top: 1px;
+	font-size:  11px;
+	line-height: 12px;
 }
 
 table {
