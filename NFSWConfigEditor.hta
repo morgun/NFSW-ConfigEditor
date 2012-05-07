@@ -1,0 +1,202 @@
+<html>
+<head>
+  <title>NFS World Configuration Editor</title>
+	<meta http-equiv="x-ua-compatible" content="ie=9">
+  <HTA:APPLICATION
+		applicationName="NFS World Configuration Editor"
+		id="nfswConfig"
+		border="thin"
+		innerBorder="no"
+    scroll="no"
+    singleInstance="yes"
+    minimizeButton="yes"
+    version="0.1.2"
+    windowState="normal"
+    selection="no"
+    icon="./NFSW.ico"
+  />
+	<script type="text/javascript" src="script.pk.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+	<table>
+		<tr><th>Screen resolution</th>           <td><select id="resolution">
+</select><select name="screenrefresh" id="refresh_rate">
+</select></td></tr>
+		<tr><th>Screen aspect ratio</th>
+			<td><select id="aspect">
+				<option value="0" selected>Default
+				<option value="1.25" selected>5:4
+				<option value="1.33" selected>4:3
+				<option value="1.60" selected>16:10
+				<option value="1.78" selected>16:9
+				<option value="2.33" selected>21:9
+			</select></td>
+		</tr>
+		<tr>
+			<th>Window mode</th>
+			<td><select name="screenwindowed">
+				<option value="1">Windowed
+				<option value="0">Full screen
+			</select></td>
+		</tr>
+		<tr>
+			<th>Vertical sync</th>
+			<td><select name="vsyncon">
+				<option value="0">Off
+				<option value="1" selected>On
+			</select></select></td>
+		</tr>
+		<tr>
+			<th>Texture filtering</th>
+			<td><select name="texturefilter">
+				<option value="0">No
+				<option value="1">Bilinear
+				<option value="2" selected>Trilinear
+			</select></td>
+		</tr>
+		<tr>
+			<th>Anisotropic filtering</th>
+			<td><select name="texturemaxani">
+				<option value="1">1x (Off)
+				<option value="2">2x
+				<option value="4">4x
+				<option value="8">8x
+				<option value="16" selected>16x
+			</select></td>
+		</tr>
+		<tr>
+			<th>Full screen anti aliasing</th>
+			<td><select name="fsaalevel">
+				<option value="0" selected>Off
+				<option value="2">2x
+				<option value="4">4x
+				<option value="6">6x
+				<option value="8">8x
+			</select></td>
+		</tr>
+		<tr>
+			<th>Disable "Windows Aero"</th>
+			<td><select name="enableaero">
+				<option value="1">Off
+				<option value="0" selected>On
+			</select></td>
+		</tr>
+		<tr>
+			<td colspan="2" height="5"></td>
+		</tr>
+		<tr>
+			<th>Audio mode</th>
+			<td><select name="audiomode">
+				<option value="1" selected>Stereo
+				<option value="2">Surround
+			</select></td>
+		</tr>
+		<tr>
+			<th>Car details</th>
+			<td><select name="carlodlevel">
+				<option value="0">Low
+				<option value="1" selected>Full
+			</select></td>
+		</tr>
+		<tr>
+			<th>Car reflections</th>
+			<td><select name="carenvironmentmapenable">
+				<option value="0">Very Low
+				<option value="1">Low
+				<option value="2">Medium
+				<option value="3">High
+				<option value="4" selected>Full
+			</select></td>
+		</tr>
+		<tr>
+			<th>World details</th>
+			<td><select name="globaldetaillevel">
+				<option value="0">Very Low
+				<option value="1">Low
+				<option value="2">Medium
+				<option value="3">High
+				<option value="4" selected>Full
+			</select></td>
+		</tr>
+		<tr>
+			<th>Skidmarks</th>
+			<td><select name="maxskidmarks">
+				<option value="0">Low
+				<option value="1">Medium
+				<option value="2" selected>Full
+			</select></td>
+		</tr>
+		<tr>
+			<th>Motion blur</th>
+			<td><select name="motionblurenable">
+				<option value="0">Off
+				<option value="1">On
+			</select></td>
+		</tr>
+		<tr>
+			<th>Bloom</th>
+			<td><select name="overbrightenable">
+				<option value="0">Off
+				<option value="1" selected>On
+			</select></td>
+		</tr>
+		<tr>
+			<th>Particles</th>
+			<td><select name="particlesystemenable">
+				<option value="0">Off
+				<option value="1" selected>On
+			</select></td>
+		</tr>
+		<tr>
+			<th>Rain</th>
+			<td><select name="rainenable">
+				<option value="0">Off
+				<option value="1" selected>On
+			</select></td>
+		</tr>
+		<tr>
+			<th>Road reflections</th>
+			<td><select name="roadreflectionenable">
+				<option value="0">Low
+				<option value="1">Medium
+				<option value="2" selected>Full
+			</select></td>
+		</tr>
+		<tr>
+			<th>Shader details</th>
+			<td><select name="shaderdetail">
+				<option value="0">Very Low
+				<option value="1">Low
+				<option value="2">Medium
+				<option value="4" selected>Full
+			</select></td>
+		</tr>
+		<tr>
+			<th>Shadow details</th>
+			<td><select name="shadowdetail">
+				<option value="0">Low
+				<option value="1">Medium
+				<option value="2" selected>Full
+			</select></td>
+		</tr>
+		<tr>
+			<th>Post-processing effects</th>
+			<td><select name="visualtreatment">
+				<option value="0">Off
+				<option value="1" selected>On
+			</select></td>
+		</tr>
+		<tr>
+			<th>Water simulation</th>
+			<td><select name="watersimenable">
+				<option value="0">Off
+				<option value="1" selected>On
+			</select></td>
+		</tr>
+	</table>
+  <div id="buttons"><button onclick="setPreset('low'); this.blur();">Max FPS</button><button onclick="setPreset('highest'); this.blur();">Best Graphics</button><!--button onclick="savePreset();this.blur();">!</button-->
+	  <button class="right" onclick="save();self.close()">Save and Close</button><button class="right" onclick="save();this.blur();">Save</button></div></div>
+	<div id="copy">Copyright 2012 <a href="mailto:me@widowmaker.kiev.ua"><font color="gold">widow</font>maker</a> @ <a href="http://forum.nfsworld.ru" target="_blank">forum.nfsworld.ru</a></div>
+</body>
+</html>

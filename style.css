@@ -1,0 +1,112 @@
+body, html {
+	background: #111;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+body, button, input, select, a {
+	color: #47ADFE;
+	font-family: "Segoe UI", sans-serif;
+	font-size: 13px;
+	background: #111;
+}
+
+button, input, select {
+	color: orange;
+	border: 1px solid #2F74A8;
+	border-radius: 2px;
+	outline: none;
+	background: #0E2333;
+}
+
+button:focus, input:focus, select:focus {
+	color: gold;
+	border-color: orange;
+	background: #332000;
+}
+
+body {
+
+}
+
+table {
+	width: 484px;
+	margin: 8px;
+	border: 1px solid #245880;
+	border-radius: 4px;
+	border-spacing: 0;
+}
+
+table tr {
+	display: table-row;
+}
+
+table th {
+	display: table-cell;
+	color: #47ADFE;
+	font-weight: normal;
+	font-size: 15px;
+	text-align: left;
+	border-right: 1px solid #183A54;
+	width: 50%;
+}
+
+table select {
+	height: 21px;
+}
+
+table th, table td {
+	cursor: default;
+	padding: 2px 5px;
+	border-top: 1px solid #183A54;
+}
+
+table td {
+	padding: 2px;
+}
+
+table tr:first-child th, table tr:first-child td {
+	border-top: none;
+}
+
+table select {
+	width: 100%;
+}
+
+#resolution {
+	width: 60%;
+}
+
+#refresh_rate {
+	width: 39%;
+	margin-left: 1%;
+}
+
+#buttons {
+	margin: 0 8px;
+}
+
+button {
+	padding: 0 15px;
+	height: 25px;
+	font-size: 16px;
+	background: #0E2333;
+	margin: 0 2px 0 0;
+}
+
+button.right {
+	margin: 0 0 0 2px;
+	float: right;
+}
+
+button:focus {
+	background: #4D3000;
+}
+
+#copy {
+	font-size: 12px;
+	margin: 2px 8px;
+	text-align: right;
+}
