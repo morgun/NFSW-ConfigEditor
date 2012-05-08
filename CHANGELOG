@@ -1,16 +1,19 @@
--==================== Vertion 0.1.4 ====================-
+-==================== Version 0.1.4 ====================-
+ * fixed error in IE8 causing program to fail
+
+-==================== Version 0.1.4 ====================-
  * forum link opens in default browser
  * email colored correctly
  * fixed critical bug, when game wasn't launched if path contained spaces
 
--==================== Vertion 0.1.3 ====================-
+-==================== Version 0.1.3 ====================-
  + If game found in registry, save & close button launches it.
 
--==================== Vertion 0.1.2 ====================-
+-==================== Version 0.1.2 ====================-
  + Added "Aspect ratio"
 
--==================== Vertion 0.1.2 ====================-
+-==================== Version 0.1.2 ====================-
  + Implemented basic presets
 
--==================== Vertion 0.1.0 ====================-
+-==================== Version 0.1.0 ====================-
  + Initial version

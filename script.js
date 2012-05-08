@@ -69,16 +69,6 @@ window.resizeTo(win.w, win.h);
 win = {w:2 * win.w - de.offsetWidth, h:2 * win.h - de.offsetHeight},
 		window.resizeTo(win.w, win.h);
 
-/** Enable window dragging **/
-document.body.attachEvent('onmousedown', function (e) {
-	drag = {x:e.x, y:e.y};
-});
-document.body.attachEvent('onmousemove', function (e) {
-	if (e.button === 1) {
-		window.moveTo(window.screenX - drag.x + e.x, window.screenY - drag.y + e.y);
-	}
-});
-
 var Locator = new ActiveXObject("WbemScripting.SWbemLocator");
 var WMI = Locator.ConnectServer('.', "/root/CIMV2");
 var FSO = new ActiveXObject("Scripting.FileSystemObject");
@@ -201,6 +191,16 @@ presets.highest.screenheight = max.resolution.split('x')[1];
 
 
 window.onload = function () {
+
+	/** Enable window dragging **/
+	document.body.attachEvent('onmousedown', function (e) {
+		drag = {x:e.x, y:e.y};
+	});
+	document.body.attachEvent('onmousemove', function (e) {
+		if (e.button === 1) {
+			window.moveTo(window.screenX - drag.x + e.x, window.screenY - drag.y + e.y);
+		}
+	});
 
 	/** Loading screen resolutions **/
 	var res = id('resolution');
