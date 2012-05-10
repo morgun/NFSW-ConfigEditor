@@ -1,6 +1,6 @@
 /**
  * @author Khavilo "widowmaker" Dmitry <me@widowmaker.kiev.ua>
- * @version 0.1.4
+ * @version 0.1.6
  */
 var	de = document.documentElement,
 		win = {w:500, h: 648},
@@ -91,10 +91,35 @@ function ReadFile(filename) {
 	return fileContents;
 }
 
-function WriteFile(filename, fileContents) {
-	var fp = FSO.OpenTextFile(filename, 2, true, 0);
+function WriteFile(filename, fileContents, force) {
+	var fp, f, hadRO = false;
+
+	f = FSO.getFile(filename);
+
+	if (f.attributes & 1 && force)
+	{
+		if (confirm('Your config file has read only attribute.\nSave anyway?'))
+		{
+			hadRO = true;
+			f.attributes = f.attributes ^ 1;
+		}
+		else
+		{
+		 	return false;
+		}
+	}
+	try {
+		fp = f.OpenAsTextStream(2, 0);
+	} catch(e) {
+		alert(e.message);
+		return false;
+	}
+
 	fp.Write(fileContents);
 	fp.Close();
+
+	if (hadRO)
+		f.attributes = f.attributes | 1;
 }
 
 try {
@@ -314,7 +339,7 @@ function save() {
 		if (currentConfiguration.hasOwnProperty(i))
 			tpl = tpl.replace(new RegExp('{' + i + '}', 'gi'), currentConfiguration[i]);
 
-	WriteFile(configFile, config.replace(/\r\n/g, '<RN>').replace(configTagRegex, '<VideoConfig>\r\n' + tpl + '\r\n    </VideoConfig>').replace(/<RN>/g, '\r\n'));
+	WriteFile(configFile, config.replace(/r\n/g, '<RN>').replace(configTagRegex, '<VideoConfig>\r\n' + tpl + '\r\n    </VideoConfig>').replace(/<RN>/g, '\r\n'), true);
 }
 
 function exit() {
